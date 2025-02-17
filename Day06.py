@@ -1,36 +1,28 @@
-def print_poly(f_x, t_x) -> str:
-    #term = len(f_x) - 1
-    poly_expression = "f(x) = "
+memo = dict()
 
-    for i in range(len(fx)):
-        coefficient = f_x[i]
-        term = t_x[i]
-
-        if (coefficient >= 0 and i != 0):
-            poly_expression = poly_expression + "+"
-        poly_expression = poly_expression + f'{coefficient}x^{term} '
-        #term = term - 1
-
-    return poly_expression
+def fibonacci_recursion(n) -> int:
 
 
-def calculation_poly(x_value, f_x, t_x) -> int:
-    return_value = 0
-    #term = len(f_x) - 1
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci_recursion(n-2) + fibonacci_recursion(n-1)
 
-    for i in range(len(fx)):
-        coefficient = f_x[i]
-        term = t_x[i]
-
-        return_value += coefficient * pow(x_value, term)
-        #term = term - 1
-
-    return return_value
+def fibonacci_memo(n) -> int:
 
 
-fx = [2, 5, -9, 11]
-tx = [20, 7, 2, 0]
+    if n in memo:
+        return memo[n] #딕셔너리에 이미 계산된 결과가 있으면 그 값을 리턴
+    elif n <= 1:
+        return n
+    else:
+        memo[n] = fibonacci_memo(n-2) + fibonacci_memo(n-1)
+        return memo[n]
 
-if __name__ == "__main__":
-    print(print_poly(fx,tx))
-    print(calculation_poly(int(input("x 값 : ")), fx, tx))
+
+
+n = int(input())
+print(fibonacci_recursion(n))
+print(fibonacci_memo(n))
