@@ -1,28 +1,11 @@
-memo = dict()
+import numpy as np
 
-def fibonacci_recursion(n) -> int:
+narray = np.array([1, 3.1, 2, 9])
+print(type(narray))
+print(narray[0], narray[1], narray[2], narray[3])
+print(type(narray), type(narray[2]), type(narray[3]))
 
-
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fibonacci_recursion(n-2) + fibonacci_recursion(n-1)
-
-def fibonacci_memo(n) -> int:
-
-
-    if n in memo:
-        return memo[n] #딕셔너리에 이미 계산된 결과가 있으면 그 값을 리턴
-    elif n <= 1:
-        return n
-    else:
-        memo[n] = fibonacci_memo(n-2) + fibonacci_memo(n-1)
-        return memo[n]
-
-
-
-n = int(input())
-print(fibonacci_recursion(n))
-print(fibonacci_memo(n))
+array = [9, -11, '8', 7]
+print(array[0], array[1], array[2], array[3])
+print(type(array), type(array[2]), type(array[3]))
+print(id(array[0]),id(array[1]),id(array[2]),id(array[3]))
