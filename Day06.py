@@ -9,3 +9,9 @@ def is_even(n) -> bool:
 
 n= int (input())
 print(is_even(n))
+
+a = 10
+b = 11
+print(a & b)
+print(a | b)
+print(a ^ b)
