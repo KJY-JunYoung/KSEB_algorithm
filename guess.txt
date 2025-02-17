@@ -1,8 +1,8 @@
 Chance : 7
 50 is lower. Chance left : 6
-75 is lower. Chance left : 5
-87 is lower. Chance left : 4
-93 is bigger. Chance left : 3
-90 is lower. Chance left : 2
-91 is lower. Chance left : 1
-You win. Answer is 92
+75 is bigger. Chance left : 5
+62 is bigger. Chance left : 4
+56 is bigger. Chance left : 3
+53 is bigger. Chance left : 2
+51 is lower. Chance left : 1
+You win. Answer is 52

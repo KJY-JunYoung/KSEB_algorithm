@@ -7,16 +7,13 @@ import random
 low = 1
 high = 100
 
-def auto_input_number(low, high) -> int:
-    return (low + high) // 2
-
 answer = random.randint(1, 100)
 chance = 7
 
 with open("guess.txt", 'w') as fp:
     fp.write(f'Chance : {chance}\n')
     while chance != 0:
-        guess = auto_input_number(low, high)
+        guess = (low + high) // 2
         if guess == answer:
             print(f'You win. Answer is {answer}')
             fp.write(f'You win. Answer is {answer}\n')
