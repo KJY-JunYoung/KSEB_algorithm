@@ -1,23 +1,17 @@
-def is_even(n) -> bool:
+# def sum(n) -> int:
+#     if n == 1:
+#         return 1
+#     else:
+#         return sum(n-1) + n
 
-    """
-    짝수 판정 함수
-    :param n: 판정할 정수
-    :return: 짝수면 True, 홀수면 False
-    """
+def sum(n) -> int:
 
-    return not n & 1
-
-def DectoOcto(n) -> int:
-
-    if n == 0:
-        return ""
-    else:
-        return DectoOcto(n // 8) + str(n % 8)
-
-
+    r=0
+    for i in range (n+1):
+       r = r + i
+    return r
 
 n= int (input())
-print(DectoOcto(n))
+print(sum(n))
 
 
