@@ -22,12 +22,12 @@ def search(root, find_group):
     current = root
     while current:
         if find_group == current.data:
-            return True
+            return current
         elif find_group < current.data:
             current = current.left  # 왼쪽 서브트리로 이동
         else:
             current = current.right  # 오른쪽 서브트리로 이동
-    return False  # 값을 찾지 못한 경우
+    return None  # 값을 찾지 못한 경우
 
 # 트리 삭제 함수
 def delete(root, data):
@@ -56,7 +56,7 @@ def delete(root, data):
 
     return root
 
-# 후속 노드를 찾는 함수 (오른쪽 서브 트리에서 가장 작은 값)
+# 후속 노드를 찾는 함수
 def min_value_node(node):
     current = node
     while current.left is not None:
@@ -64,23 +64,38 @@ def min_value_node(node):
     return current
 
 if __name__ == "__main__":
-    numbers = [10, 15, 8, 3, 9]  # 트리 삽입할 값들
-    root = None  # 트리의 루트 노드는 처음에 None
+    root = None
+    while True:
+        print("\n--- 트리 관리 메뉴 ---")
+        print("1. 값 삽입")
+        print("2. 값 삭제")
+        print("3. 값 찾기")
+        print("4. 종료")
+        choice = input("원하는 작업을 선택하세요: ")
 
-    # 숫자 리스트를 사용해 트리를 구성
-    for group in numbers:
-        root = insert(root, group)  # insert 함수로 노드를 트리에 삽입
+        if choice == '1':  # 값 삽입
+            value = int(input("삽입할 값을 입력하세요: "))
+            root = insert(root, value)
+            print(f"{value} 삽입 완료")
 
-    print("BST 구성 완료")
+        elif choice == '2':  # 값 삭제
+            value = int(input("삭제할 값을 입력하세요: "))
+            if search(root, value):
+                root = delete(root, value)
+                print(f"{value} 삭제 완료")
+            else:
+                print(f"{value}은(는) 트리에 존재하지 않습니다.")
 
-    # 특정 값 찾기
-    find_group = int(input("찾고 싶은 값을 입력하세요: "))
-    if search(root, find_group):
-        print(f"{find_group}을(를) 찾았습니다")
-    else:
-        print(f"{find_group}이(가) 존재하지 않습니다")
+        elif choice == '3':  # 값 찾기
+            value = int(input("찾고 싶은 값을 입력하세요: "))
+            if search(root, value):
+                print(f"{value}을(를) 찾았습니다.")
+            else:
+                print(f"{value}이(가) 존재하지 않습니다.")
 
-    # 특정 값 삭제
-    delete_value = int(input("삭제할 값을 입력하세요: "))
-    root = delete(root, delete_value)
-    print(f"{delete_value}을(를) 삭제한 후 BST 구조:")
+        elif choice == '4':  # 종료
+            print("프로그램을 종료합니다.")
+            break
+
+        else:
+            print("잘못된 선택입니다. 다시 선택하세요.")
